@@ -10,6 +10,14 @@ defined('BASEPATH') OR exit('No direct scrip acess allowed');
 
 class Gincana extends CI_Controller {
 
+    public function __construct() {
+        //chama o construtor da calsse pai (CI_Controller)
+        parent::__construct();
+        //chama o metodo que faz a validção de login de usuario
+        $this->load->model('Usuario_model');
+        $this->Usuario_model->verificaLogin();
+    }
+
     public function index() {
         // echo'Hello World!!'; envés disso chama-se:
         $this->listar();
@@ -18,7 +26,7 @@ class Gincana extends CI_Controller {
     public function listar() {
         $this->load->model('Gincana_model', 'cm');
         $data['provas'] = $this->cm->getALL();
-        $this->load->view('ListaGincanas',$data);
+        $this->load->view('ListaGincanas', $data);
     }
 
     public function cadastrar() {
@@ -44,7 +52,6 @@ class Gincana extends CI_Controller {
         }
     }
 
-    
     public function alterar($id) {
         if ($id > 0) {
             $this->load->model('Gincana_model');
@@ -73,20 +80,17 @@ class Gincana extends CI_Controller {
             redirect('Gincana/listar');
         }
     }
-     
+
     public function deletar($id) {
         if ($id > 0) {
-            $this->load->model('Gincana_model');    
-            if($this->Gincana_model->delete($id)) {
-                $this->session->set_flashdata('mensagem',
-                            'Prova deletada com sucesso!');                            
+            $this->load->model('Gincana_model');
+            if ($this->Gincana_model->delete($id)) {
+                $this->session->set_flashdata('mensagem', 'Prova deletada com sucesso!');
             } else {
-                $this->session->set_flashdata('mensagem',
-                            'Falha ao deletar prova...');
+                $this->session->set_flashdata('mensagem', 'Falha ao deletar prova...');
             }
         }
         redirect('Gincana/listar');
     }
-    
 
 }
