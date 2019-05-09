@@ -26,7 +26,9 @@ class Gincana extends CI_Controller {
     public function listar() {
         $this->load->model('Gincana_model', 'cm');
         $data['provas'] = $this->cm->getALL();
+        $this->load->view('Header');
         $this->load->view('ListaGincanas', $data);
+        $this->load->view('Footer');
     }
 
     public function cadastrar() {
@@ -34,8 +36,11 @@ class Gincana extends CI_Controller {
         $this->form_validation->set_rules('tempo', 'tempo', 'required');
         $this->form_validation->set_rules('nm_integrantes', 'nm_integrantes', 'required');
         $this->form_validation->set_rules('descricao', 'descricao', 'required');
+
         if ($this->form_validation->run() == false) {
+            $this->load->view('Header');
             $this->load->view('FormGincana');
+            $this->load->view('Footer');
         } else {
             $this->load->model('Gincana_model');
             $data = array(
@@ -62,7 +67,12 @@ class Gincana extends CI_Controller {
 
             if ($this->form_validation->run() == false) {
                 $data['prova'] = $this->Gincana_model->getONE($id);
+                
+                $this->load->view('Header');
                 $this->load->view('FormGincana', $data);
+                $this->load->view('Footer');
+                
+                
             } else {
                 $data = array(
                     'nome' => $this->input->post('nome'),
