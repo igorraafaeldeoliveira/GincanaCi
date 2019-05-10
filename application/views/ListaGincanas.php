@@ -36,11 +36,11 @@
             echo '<td>' . $c->nm_integrantes . '</td>';
             echo '<td>' . $c->descricao . '</td>';
             echo '<td>' . '<a href="' . $this->config->base_url()
-            . 'index.php/Gincana/alterar/'
+            . 'Gincana/alterar/'
             . $c->id . '"> <i class="fas fa-pen"></i> Alterar </a>'
             . ' / '
             . '<a href="' . $this->config->base_url()
-            . 'index.php/Gincana/deletar/'
+            . 'Gincana/deletar/'
             . $c->id . '"> <i class="fas fa-trash"></i> Deletar </a>'
             . '</td>';
             echo '</tr>';

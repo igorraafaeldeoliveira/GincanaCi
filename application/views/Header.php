@@ -44,6 +44,16 @@ and open the template in the editor.
                                 <a href="<?= $this->config->base_url() . 'Equipe/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
                             </div>
                         </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a href="#" id="menuIntegrante" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                <font color="white">Integrantes</font> 
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="menuIntegrante">
+                                <a href="<?= $this->config->base_url() . 'Integrante/listar'; ?>" class="dropdown-item">Lista</a>
+                                <a href="<?= $this->config->base_url() . 'Integrante/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
+                            </div>
+                        </li>
                     </ul>
                     <ul class="navbar-nav justfy-content-end">
                         <li class="nav-item">

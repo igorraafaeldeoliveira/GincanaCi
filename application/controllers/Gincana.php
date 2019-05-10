@@ -66,7 +66,7 @@ class Gincana extends CI_Controller {
             $this->form_validation->set_rules('descricao', 'descricao', 'required');
 
             if ($this->form_validation->run() == false) {
-                $data['prova'] = $this->Gincana_model->getONE($id);
+                $data['provas'] = $this->Gincana_model->getONE($id);
                 
                 $this->load->view('Header');
                 $this->load->view('FormGincana', $data);

@@ -8,7 +8,7 @@
 
 defined('BASEPATH') OR exit('No direct scrip acess allowed');
 
-class Gincana extends CI_Controller {
+class Integrante extends CI_Controller {
 
     public function __construct() {
         //chama o construtor da calsse pai (CI_Controller)
@@ -24,83 +24,74 @@ class Gincana extends CI_Controller {
     }
 
     public function listar() {
-        $this->load->model('Gincana_model', 'cm');
-        $data['provas'] = $this->cm->getALL();
+        $this->load->model('Integrante_model', 'cm');
+        $data['integrantes'] = $this->cm->getALL();
         $this->load->view('Header');
-        $this->load->view('ListaGincanas', $data);
+        $this->load->view('ListaIntegrantes', $data);
         $this->load->view('Footer');
     }
 
     public function cadastrar() {
         $this->form_validation->set_rules('nome', 'nome', 'required');
-        $this->form_validation->set_rules('tempo', 'tempo', 'required');
-        $this->form_validation->set_rules('nm_integrantes', 'nm_integrantes', 'required');
-        $this->form_validation->set_rules('descricao', 'descricao', 'required');
-
+        $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
+        
         if ($this->form_validation->run() == false) {
             $this->load->view('Header');
-            $this->load->view('FormGincana');
+            $this->load->view('FormIntegrante');
             $this->load->view('Footer');
         } else {
-            $this->load->model('Gincana_model');
+            $this->load->model('Integrante_model');
             $data = array(
                 'nome' => $this->input->post('nome'),
-                'tempo' => $this->input->post('tempo'),
-                'nm_integrantes' => $this->input->post('nm_integrantes'),
-                'descricao' => $this->input->post('descricao'),
+                'rg' => $this->input->post('rg'),
+                'cpf' => $this->input->post('cpf'),
+                'id_equipe' => $this->input->post('id_equipe'),
+                'data_nasc' => $this->input->post('data_nasc'),
             );
-            if ($this->Gincana_model->insert($data)) {
-                redirect('Gincana/listar');
+            if ($this->Integrante_model->insert($data)) {
+                redirect('Integrante/listar');
             } else {
-                redirect('Gincana/cadastrar');
+                redirect('Integrante/cadastrar');
             }
         }
     }
 
     public function alterar($id) {
         if ($id > 0) {
-            $this->load->model('Gincana_model');
             $this->form_validation->set_rules('nome', 'nome', 'required');
-            $this->form_validation->set_rules('tempo', 'tempo', 'required');
-            $this->form_validation->set_rules('nm_integrantes', 'nm_integrantes', 'required');
-            $this->form_validation->set_rules('descricao', 'descricao', 'required');
-
+            $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
+            $this->load->model('Integrante_model');
             if ($this->form_validation->run() == false) {
-                $data['prova'] = $this->Gincana_model->getONE($id);
-                
+                $data['integrante'] = $this->Integrante_model->getOne($id);
                 $this->load->view('Header');
-                $this->load->view('FormGincana', $data);
+                $this->load->view('FormIntegrante', $data);
                 $this->load->view('Footer');
-                
-                
             } else {
                 $data = array(
                     'nome' => $this->input->post('nome'),
-                    'tempo' => $this->input->post('tempo'),
-                    'nm_integrantes' => $this->input->post('nm_integrantes'),
-                    'descricao' => $this->input->post('descricao'),
+                    'id_equipe' => $this->input->post('id_equipe'),
                 );
-                if ($this->Gincana_model->update($id, $data)) {
-                    redirect('Gincana/listar');
+                if ($this->Integrante_model->update($id, $data)) {
+                    redirect('Integrante/listar');
                 } else {
-                    redirect('Gincana/alterar/' . $id);
+                    redirect('Integrante/alterar/' . $id);
                 }
             }
         } else {
-            redirect('Gincana/listar');
+            redirect('Integrante/listar');
         }
     }
 
     public function deletar($id) {
         if ($id > 0) {
-            $this->load->model('Gincana_model');
-            if ($this->Gincana_model->delete($id)) {
-                $this->session->set_flashdata('mensagem', 'Prova deletada com sucesso!');
+            $this->load->model('Integrante_model');
+            if ($this->Integrante_model->delete($id)) {
+                $this->session->set_flashdata('mensagem', 'Equipe deletada com sucesso!');
             } else {
-                $this->session->set_flashdata('mensagem', 'Falha ao deletar prova...');
+                $this->session->set_flashdata('mensagem', 'Falha ao deletar Equipe...');
             }
         }
-        redirect('Gincana/listar');
+        redirect('Integrante/listar');
     }
 
 }
