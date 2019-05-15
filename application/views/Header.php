@@ -54,6 +54,17 @@ and open the template in the editor.
                                 <a href="<?= $this->config->base_url() . 'Integrante/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
                             </div>
                         </li>
+                        
+                     <li class="nav-item dropdown">
+                            <a href="#" id="menuPontuacao" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                <font color="white">Pontuações</font> 
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="menuPontuacao">
+                                <a href="<?= $this->config->base_url() . 'Pontuacao/listar'; ?>" class="dropdown-item">Lista</a>
+                                <a href="<?= $this->config->base_url() . 'Pontuacao/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
+                            </div>
+                        </li>
+                        
                     </ul>
                     <ul class="navbar-nav justfy-content-end">
                         <li class="nav-item">

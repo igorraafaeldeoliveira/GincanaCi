@@ -1,7 +1,7 @@
 <div class="container-expand ">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= $this->config->base_url(); ?>">Ir para lista de Equipes</a></li>
+            <li class="breadcrumb-item"><a href="<?= $this->config->base_url().'Equipe/listar'; ?>">Ir para lista</a></li>
             <li class="breadcrumb-item active" aria-current="page">Cadastro de Equipe</li>
         </ol>
     </nav>

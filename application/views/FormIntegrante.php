@@ -1,8 +1,8 @@
 <div class="container-expand ">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= $this->config->base_url(); ?>">Ir para lista</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Cadastro de Provas </li>
+            <li class="breadcrumb-item"><a href="<?= $this->config->base_url().'Integrante/listar'; ?>">Ir para lista</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cadastro de Integrantes </li>
         </ol>
     </nav>
 
@@ -31,7 +31,7 @@
 
                     <div class = "form-group">
                         <label for = "data_nasc">Data de nascimento:</label>
-                        <input type = "date" class = "form-control" name = "data_nasc" id = "data_nasc" value = "<?= (isset($integrante)) ? $integrante->data_nasc: ''; ?>">
+                        <input type = "date" class = "form-control" name = "data_nasc" id = "data_nasc" value = "<?= (isset($integrante)) ? $integrante->data_nasc : ''; ?>">
                     </div>
                     <div class = "form-group">
                         <label for = "rg"> RG:</label>
@@ -40,12 +40,19 @@
 
                     <div class = "form-group">
                         <label for = "cpf"> CPF:</label>
-                        <input type = "text" class = "form-control" name = "cpf" id = "cpf" value = "<?= (isset($integrante)) ? $integrante->cpf: ''; ?>">
+                        <input type = "text" class = "form-control" name = "cpf" id = "cpf" value = "<?= (isset($integrante)) ? $integrante->cpf : ''; ?>">
                     </div>
-                    
-                     <div class = "form-group">
-                        <label for = "id_equipe">Número da Equipe</label>
-                        <select name="id_equipe"
+
+                    <div class = "form-group">
+                        <select class="form-control" name="id_equipe">
+                            <option>Selecione a equipe pertencente</option>
+
+                            <?php
+                            foreach ($integrantes as $i) {
+                                echo '<option value='. $i->id .' >'. $i->nome.'</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
 
                     <button type = "submit" class = "btn btn-success">Enviar</button>

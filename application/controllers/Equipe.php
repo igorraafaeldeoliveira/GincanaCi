@@ -16,6 +16,7 @@ class Equipe extends CI_Controller {
         //chama o metodo que faz a validção de login de usuario
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();
+        $this->load->model('Equipe_model', 'cm');
     }
 
     public function index() {
@@ -24,7 +25,6 @@ class Equipe extends CI_Controller {
     }
 
     public function listar() {
-        $this->load->model('Equipe_model', 'cm');
         $data['equipes'] = $this->cm->getALL();
         $this->load->view('Header');
         $this->load->view('ListaEquipes', $data);

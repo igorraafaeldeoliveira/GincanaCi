@@ -2,7 +2,7 @@
 <div class="container-expand">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= $this->config->base_url(); ?>"><a href="http://127.0.0.1/GincanaCI/index.php/Gincana/cadastrar">Ir para cadastrar Equipe</a></a></li>
+            <li class="breadcrumb-item"><a href="<?= $this->config->base_url().'Equipe/cadastrar'; ?>">Ir para cadastrar</a></li>
             <li class="breadcrumb-item active" aria-current="page">Cadastro de Equipe </li>
         </ol>
     </nav>

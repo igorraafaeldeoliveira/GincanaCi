@@ -2,8 +2,8 @@
 <div class="container-expand">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="<?= $this->config->base_url(); ?>"><a href="http://127.0.0.1/GincanaCI/index.php/Gincana/cadastrar">Ir para cadastrar</a></a></li>
-            <li class="breadcrumb-item active" aria-current="page">Cadastro de Equipe </li>
+            <li class="breadcrumb-item"><a href="<?= $this->config->base_url().'Integrante/cadastrar'; ?>">Ir para cadastrar</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Cadastro de Integrantes</li>
         </ol>
     </nav>
 
@@ -13,7 +13,7 @@
     ?>
 </div>
 
-<h1>Lista de Provas</h1>
+<h1>Lista de Integrantes</h1>
 <br>
 <div class="table-responsive">
 <table class='table' border="1">

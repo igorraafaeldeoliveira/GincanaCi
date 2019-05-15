@@ -10,7 +10,12 @@ class Integrante_model extends CI_Model {
         $this->db->insert('integrante', $data);
         return $this->db->affected_rows();
     }
-
+  
+    public function getEquipe() {
+        $query = $this->db->get('equipe');
+        return $query->result();    
+    }
+    
     public function getALL() {
         $this->db->select('integrante.*, equipe.nome as nomeIntegrante');
         $this->db->from('integrante');
