@@ -12,7 +12,7 @@ class Gincana extends CI_Controller {
 
     public function __construct() {
         //chama o construtor da calsse pai (CI_Controller)
-        parent::__construct();
+        parent:: __construct();
         //chama o metodo que faz a validção de login de usuario
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();

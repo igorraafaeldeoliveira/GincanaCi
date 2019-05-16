@@ -22,9 +22,7 @@ class Integrante_model extends CI_Model {
         
         $this->db->join('equipe', 'equipe.id=integrante.id_equipe', 'inner');
         $query = $this->db->get();
-        return $query->result();
-    
-        
+        return $query->result(); 
     }
 
     public function getOne($id) {
@@ -52,5 +50,4 @@ class Integrante_model extends CI_Model {
             return false;
         }
     }
-
 }
