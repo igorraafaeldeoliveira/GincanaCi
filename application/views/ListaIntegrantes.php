@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= $this->config->base_url().'Integrante/cadastrar'; ?>">Ir para cadastrar</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Cadastro de Integrantes</li>
+            <li class="breadcrumb-item active" aria-current="page">Lista de Integrantes</li>
         </ol>
     </nav>
 
@@ -12,8 +12,9 @@
     echo (isset($mensagem) ? '<div class="alert alert-success" role="alert"> ' . $mensagem . '</div>' : '');
     ?>
 </div>
-
-<h1>Lista de Integrantes</h1>
+<div>
+    <h1 style="text-align:center;"><font><i class="fas fa-male"></i> Lista de Integrantes <i class="fas fa-male"></i></h1>
+</div>
 <br>
 <div class="table-responsive">
 <table class='table' border="1">

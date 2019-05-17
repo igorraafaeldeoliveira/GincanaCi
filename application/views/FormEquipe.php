@@ -25,6 +25,12 @@
                         <label for = "nome"> Nome:</label>
                         <input type = "text" class = "form-control" name = "nome" id = "nome" value = "<?= (isset($equipe)) ? $equipe->nome : ''; ?>">
                     </div>
+                    
+                    <input type = "hidden" name = "id" value = "<?= (isset($equipe)) ? $equipe->id : ''; ?>">
+                    <div class = "form-group">
+                        <label for = "imagem"> Logomarca da equipe:</label>
+                       <input  type = "file"  name = "imagem"  size = "20"/>
+                    </div>
                      <button type = "submit" class = "btn btn-success">Enviar</button>
                     <button type = "reset" class = "btn btn-danger">Limpar</button>
                 </form>

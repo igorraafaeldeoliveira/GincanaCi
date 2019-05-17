@@ -34,8 +34,8 @@ and open the template in the editor.
                                 <a href="<?= $this->config->base_url() . 'Gincana/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
                             </div>
                         </li>
-                        
-                          <li class="nav-item dropdown">
+
+                        <li class="nav-item dropdown">
                             <a href="#" id="menuEquipe" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 <font color="white">Equipes</font> 
                             </a>
@@ -44,7 +44,7 @@ and open the template in the editor.
                                 <a href="<?= $this->config->base_url() . 'Equipe/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
                             </div>
                         </li>
-                        
+
                         <li class="nav-item dropdown">
                             <a href="#" id="menuIntegrante" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 <font color="white">Integrantes</font> 
@@ -54,8 +54,8 @@ and open the template in the editor.
                                 <a href="<?= $this->config->base_url() . 'Integrante/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
                             </div>
                         </li>
-                        
-                     <li class="nav-item dropdown">
+
+                        <li class="nav-item dropdown">
                             <a href="#" id="menuPontuacao" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                 <font color="white">Pontuações</font> 
                             </a>
@@ -64,7 +64,13 @@ and open the template in the editor.
                                 <a href="<?= $this->config->base_url() . 'Pontuacao/cadastrar'; ?>"  class="dropdown-item">Cadastro</a>   
                             </div>
                         </li>
-                        
+
+                        <li>
+                            <div class="nav-link">
+                                <a href="<?= $this->config->base_url() . 'Ranking/listar'; ?>" ><font color="white">Ranking</font></a>
+                            </div>
+                        </li>
+
                     </ul>
                     <ul class="navbar-nav justfy-content-end">
                         <li class="nav-item">

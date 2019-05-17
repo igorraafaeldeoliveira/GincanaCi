@@ -3,7 +3,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?= $this->config->base_url(); ?>"><a href="http://127.0.0.1/GincanaCI/index.php/Gincana/cadastrar">Ir para cadastrar</a></a></li>
-            <li class="breadcrumb-item active" aria-current="page">Cadastro de Provas </li>
+            <li class="breadcrumb-item active" aria-current="page">Lista de Provas </li>
         </ol>
     </nav>
 
@@ -13,7 +13,7 @@
     ?>
 </div>
 
-<h1>Lista de Provas</h1>
+ <h1 style="text-align:center;"><i class="fas fa-futbol"></i> Lista de Provas <i class="fas fa-futbol"></i></h1>
 <br>
 <div class="table-responsive">
 <table class='table' border="1">

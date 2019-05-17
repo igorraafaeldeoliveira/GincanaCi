@@ -16,6 +16,7 @@ class Integrante extends CI_Controller {
         //chama o metodo que faz a validção de login de usuario
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();
+        $this->load->model('Integrante_model', 'cm');
     }
 
     public function index() {
@@ -24,7 +25,6 @@ class Integrante extends CI_Controller {
     }
 
     public function listar() {
-        $this->load->model('Integrante_model', 'cm');
         $data['integrantes'] = $this->cm->getALL();
         $this->load->view('Header');
         $this->load->view('ListaIntegrantes', $data);
@@ -34,15 +34,14 @@ class Integrante extends CI_Controller {
     public function cadastrar() {
         $this->form_validation->set_rules('nome', 'nome', 'required');
         $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
-        $this->load->model('Integrante_model');
-      
+
         if ($this->form_validation->run() == false) {
-            $data['integrantes'] = $this->Integrante_model->getEquipe();
+            $data['integrantes'] = $this->cm->getEquipe();
             $this->load->view('Header');
-            $this->load->view('FormIntegrante',$data);
+            $this->load->view('FormIntegrante', $data);
             $this->load->view('Footer');
         } else {
-            
+
             $data = array(
                 'nome' => $this->input->post('nome'),
                 'rg' => $this->input->post('rg'),
@@ -62,10 +61,9 @@ class Integrante extends CI_Controller {
         if ($id > 0) {
             $this->form_validation->set_rules('nome', 'nome', 'required');
             $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
-            $this->load->model('Integrante_model');
-           
+
             if ($this->form_validation->run() == false) {
-                  $data['integrantes'] = $this->Integrante_model->getEquipe();
+                $data['integrantes'] = $this->Integrante_model->getEquipe();
                 $data['integrante'] = $this->Integrante_model->getOne($id);
                 $this->load->view('Header');
                 $this->load->view('FormIntegrante', $data);
@@ -88,7 +86,6 @@ class Integrante extends CI_Controller {
 
     public function deletar($id) {
         if ($id > 0) {
-            $this->load->model('Integrante_model');
             if ($this->Integrante_model->delete($id)) {
                 $this->session->set_flashdata('mensagem', 'Equipe deletada com sucesso!');
             } else {

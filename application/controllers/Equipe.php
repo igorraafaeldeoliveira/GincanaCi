@@ -43,10 +43,28 @@ class Equipe extends CI_Controller {
             $data = array(
                 'nome' => $this->input->post('nome'),
             );
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_width'] = 1024;
+            $config['max_height'] = 768;
+            $config['encrypt_name'] = true;
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload('imagem')) {
+                $error = $this->upload->display_errors();
+                //cria uma sessão com o error e o redireciona
+                $this->session->set_flashdata('mensagem', '<div class=alert alert success>Equipe foi cadastrada com sucesso</div>');
+                redirect('Equipe/listar'); //Se der certo manda para a lista 
+                exit();
+            } else {
+                //pega o nome do arquivo que foi enviado e adiciona no array $data que
+                $data['imagem'] = $this->uploads->data('file_name');
+            }
             if ($this->Equipe_model->insert($data)) {
+                $this->session->set_flashdata('mensagem', '<div class="alert alert sucees>Sucesso</div>"');
                 redirect('Equipe/listar');
             } else {
                 redirect('Equipe/cadastrar');
+                $this->session->set_flashdata('mensagem', '<div class="alert alert danger>Sucesso</div>"');
             }
         }
     }
@@ -66,10 +84,28 @@ class Equipe extends CI_Controller {
                 $data = array(
                     'nome' => $this->input->post('nome'),
                 );
+
+                $config['upload_path'] = './uploads/';
+                $config['allowed_types'] = 'gif|jpg|png';
+                $config['max_width'] = 1024;
+                $config['max_height'] = 768;
+                $config['encrypt_name'] = true;
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('userfile')) {
+                    $error = $this->upload->display_errors();
+                    //cria uma sessão com o error e o redireciona
+                    $this->session->set_flashdata('mensagem', '<div class=alert alert success>Imagem foi cadastrada com sucesso</div>');
+                    redirect('Equipe/listar'); //Se der certo manda para a lista 
+                    exit();
+                } else {
+                    //pega o nome do arquivo que foi enviado e adiciona no array $data que
+                    $data['imagem'] = $this->uploads->data('file_name');
+                }
+
                 if ($this->Equipe_model->update($id, $data)) {
                     redirect('Equipe/listar');
                 } else {
-                    redirect('Equipe/alterar/' . $id);
+                    redirect('Equipe/alterar' . $id);
                 }
             }
         } else {

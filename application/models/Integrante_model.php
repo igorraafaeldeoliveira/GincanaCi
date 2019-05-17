@@ -18,8 +18,7 @@ class Integrante_model extends CI_Model {
     
     public function getALL() {
         $this->db->select('integrante.*, equipe.nome as nomeIntegrante');
-        $this->db->from('integrante');
-        
+        $this->db->from('integrante'); 
         $this->db->join('equipe', 'equipe.id=integrante.id_equipe', 'inner');
         $query = $this->db->get();
         return $query->result(); 
