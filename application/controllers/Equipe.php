@@ -94,18 +94,20 @@ class Equipe extends CI_Controller {
                 $this->load->library('upload', $config);
                
                 if (!$this->upload->do_upload('imagem')) {
-                    $error = $this->upload->display_errors();
+                    $error = $this->upload->display_errors();     
+                  
                     //cria uma sessão com o error e o redireciona
                     $this->session->set_flashdata('mensagem', '<div class=alert alert success>Imagem foi cadastrada com sucesso</div>');
                     redirect('Equipe/listar'); //Se der certo manda para a lista 
                     exit();
                 } else {
                     //pega o nome do arquivo que foi enviado e adiciona no array $data que
+                  
                     $data['imagem'] = $this->upload->data('file_name');
                 }
 
                 if ($this->Equipe_model->update($id, $data)) {
-                    unlink('uploads/' . $equipe->imagem);
+                   
                     redirect('Equipe/listar');
                 } else {
                     redirect('Equipe/alterar' . $id);
