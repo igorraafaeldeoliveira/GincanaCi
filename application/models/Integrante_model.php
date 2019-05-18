@@ -11,7 +11,7 @@ class Integrante_model extends CI_Model {
         return $this->db->affected_rows();
     }
   
-    public function getEquipe() {
+    public function getEquipe(){
         $query = $this->db->get('equipe');
         return $query->result();    
     }

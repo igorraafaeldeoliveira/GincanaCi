@@ -9,6 +9,7 @@
     <?php
     $mensagem = $this->session->flashdata('mensagem');
     echo (isset($mensagem) ? '<div class="alert alert-success" role="alert"> ' . $mensagem . '</div>' : '');
+    
     ?>
 </div>
 
@@ -49,7 +50,9 @@
 
                             <?php
                             foreach ($integrantes as $i) {
-                                echo '<option value='. $i->id .' >'. $i->nome.'</option>';
+                                echo '<option ';
+                                echo ($i->id == $integrante->id_equipe) ? 'selected' : '';
+                                echo ' value='. $i->id .' >'. $i->nome.'</option>';
                             }
                             ?>
                         </select>

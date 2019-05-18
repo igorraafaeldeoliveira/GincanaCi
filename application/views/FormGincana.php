@@ -26,21 +26,21 @@
 
                     <div class = "form-group">
                         <label for = "nome"> Nome:</label>
-                        <input type = "text" class = "form-control" name = "nome" id = "nome" value = "<?= (isset($prova)) ? $prova->nome : ''; ?>">
+                        <input type = "text" class = "form-control" name = "nome" id = "nome" value = "<?= (isset($provas)) ? $provas->nome : ''; ?>">
                     </div>
 
                     <div class = "form-group">
                         <label for = "descricao">Descrição:</label>
-                        <input type = "text" class = "form-control" name = "descricao" id = "descricao" value = "<?= (isset($prova)) ? $prova->descricao : ''; ?>">
+                        <input type = "text" class = "form-control" name = "descricao" id = "descricao" value = "<?= (isset($provas)) ? $provas->descricao : ''; ?>">
                     </div>
                     <div class = "form-group">
                         <label for = "nm_integrantes"> Número de integrantes:</label>
-                        <input type = "text" class = "form-control" name = "nm_integrantes" id = "nm_integrantes" value = "<?= (isset($prova)) ? $prova->nm_integrantes : ''; ?>">
+                        <input type = "text" class = "form-control" name = "nm_integrantes" id = "nm_integrantes" value = "<?= (isset($provas)) ? $provas->nm_integrantes : ''; ?>">
                     </div>
 
                     <div class = "form-group">
                         <label for = "tempo"> Tempo:</label>
-                        <input type = "text" class = "form-control" name = "tempo" id = "tempo" value = "<?= (isset($prova)) ? $prova->tempo : ''; ?>">
+                        <input type = "text" class = "form-control" name = "tempo" id = "tempo" value = "<?= (isset($provas)) ? $provas->tempo : ''; ?>">
                     </div>
 
                     <button type = "submit" class = "btn btn-success">Enviar</button>

@@ -83,7 +83,7 @@ class Gincana extends CI_Controller {
                 if ($this->Gincana_model->update($id, $data)) {
                     redirect('Gincana/listar');
                 } else {
-                    redirect('Gincana/alterar/' . $id);
+                    redirect('Gincana/alterar' . $id);
                 }
             }
         } else {

@@ -31,7 +31,7 @@
             foreach ($equipes as $c) {
                 echo '<tr>';
                 echo '<td>' . $c->nome . '</td>';
-                echo '<td>' . $c->imagem . '</td>';
+                echo '<td><img class="img-fluid" style="max-height:60px;" src="' . $this->config->base_url(). 'uploads/' . $c->imagem . '"></td>';
                 echo '<td>' . '<a href="' . $this->config->base_url()
                 . 'Equipe/alterar/'
                 . $c->id . '"> <i class="fas fa-pen"></i> Alterar </a>'

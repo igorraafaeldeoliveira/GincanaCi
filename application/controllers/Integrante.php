@@ -16,7 +16,7 @@ class Integrante extends CI_Controller {
         //chama o metodo que faz a validção de login de usuario
         $this->load->model('Usuario_model');
         $this->Usuario_model->verificaLogin();
-        $this->load->model('Integrante_model', 'cm');
+        $this->load->model('Integrante_model');
     }
 
     public function index() {
@@ -25,7 +25,7 @@ class Integrante extends CI_Controller {
     }
 
     public function listar() {
-        $data['integrantes'] = $this->cm->getALL();
+        $data['integrantes'] = $this->Integrante_model->getALL();
         $this->load->view('Header');
         $this->load->view('ListaIntegrantes', $data);
         $this->load->view('Footer');
@@ -36,7 +36,7 @@ class Integrante extends CI_Controller {
         $this->form_validation->set_rules('id_equipe', 'id_equipe', 'required');
 
         if ($this->form_validation->run() == false) {
-            $data['integrantes'] = $this->cm->getEquipe();
+            $data['integrantes'] = $this->Integrante_model->getEquipe();
             $this->load->view('Header');
             $this->load->view('FormIntegrante', $data);
             $this->load->view('Footer');
@@ -71,7 +71,10 @@ class Integrante extends CI_Controller {
             } else {
                 $data = array(
                     'nome' => $this->input->post('nome'),
-                    'id_equipe' => $this->input->post('id_equipe'),
+                    'data_nasc' => $this->input->post('data_nasc'),
+                    'rg' => $this->input->post('rg'),
+                    'cpf' => $this->input->post('cpf'),
+                    'id_equipe' => $this->input->post('id_equipe')
                 );
                 if ($this->Integrante_model->update($id, $data)) {
                     redirect('Integrante/listar');
@@ -87,9 +90,9 @@ class Integrante extends CI_Controller {
     public function deletar($id) {
         if ($id > 0) {
             if ($this->Integrante_model->delete($id)) {
-                $this->session->set_flashdata('mensagem', 'Equipe deletada com sucesso!');
+                $this->session->set_flashdata('mensagem', 'Integrante deletada com sucesso!');
             } else {
-                $this->session->set_flashdata('mensagem', 'Falha ao deletar Equipe...');
+                $this->session->set_flashdata('mensagem', 'Falha ao deletar Integrante...');
             }
         }
         redirect('Integrante/listar');
